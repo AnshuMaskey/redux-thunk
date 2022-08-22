@@ -53,9 +53,25 @@ function User() {
   return (
     <div className="m-5 ">
       <div className="m-4">
-        <Button variant="primary" onClick={dataHandler}>
-          Get User
-        </Button>
+        <Card
+          sx={{
+            width: 750,
+            backgroundColor: "rgb(235, 245, 245)",
+            margin: "auto",
+            marginBottom: 10,
+          }}
+        >
+          <h2 style={{ padding: "20", marginTop: "5%" }}>
+            Click the button to get random users
+          </h2>
+          <Button
+            style={{ padding: "20", marginBottom: "5%" }}
+            variant="primary"
+            onClick={dataHandler}
+          >
+            Get User
+          </Button>
+        </Card>
       </div>
       {loading ? (
         <div
