@@ -1,0 +1,27 @@
+/* .container {
+  padding-top: 30px;
+  height: 60vh;
+  width: 30vh;
+  justify-content: center;
+
+  background-color: rgb(235, 245, 245);
+} */
+
+.iconsConatiner {
+  display: flex;
+  /* background-color: black; */
+  justify-content: center;
+}
+
+.icons {
+  margin: 0px;
+  width: 400px;
+  height: 50px;
+  display: flex;
+  justify-content: space-evenly;
+  /* background-color: pink; */
+}
+
+.icon:hover {
+  color: rgb(76, 187, 139);
+}
