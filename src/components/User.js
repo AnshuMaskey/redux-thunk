@@ -1,33 +1,27 @@
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
-import Table from "react-bootstrap/Table";
 import { AiOutlineMail, AiFillPhone, AiFillLock } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
 import { RiCalendarTodoFill } from "react-icons/ri";
 import { FaMapMarkedAlt } from "react-icons/fa";
 import "./User.css";
-import {
-  getdata,
-  iconIndex,
-  dataLoader,
-  dataReplace,
-} from "../redux/actionCreator";
+import { getdata, iconIndex, dataLoader } from "../redux/actionCreator";
 import { useDispatch, useSelector } from "react-redux";
-import { IconButton, Card } from "@mui/material";
+import { IconButton, Card, Alert } from "@mui/material";
 import Text from "./Text";
 import { Rings } from "react-loader-spinner";
+import DataTable from "./DataTable";
+import { useState } from "react";
 
 function User() {
   const dispatch = useDispatch();
-  // const index = useSelector((state) => state.activeIcon);
-  // console.log(index, "index");
+  const [error, setError] = useState("");
   const data = useSelector((state) => state.user);
-  const users = useSelector((state) => state.users);
   const loading = useSelector((state) => state.isLoading);
   console.log(data, "data");
 
   const dataHandler = () => {
-    dispatch(getdata());
+    dispatch(getdata(setError));
     dispatch(dataLoader(true));
   };
 
@@ -73,6 +67,13 @@ function User() {
           </Button>
         </Card>
       </div>
+      {error && (
+        <div style={{ width: 750, margin: "auto" }}>
+          <Alert severity="error">
+            <h4>{error}</h4>
+          </Alert>
+        </div>
+      )}
       {loading ? (
         <div
           style={{
@@ -110,7 +111,7 @@ function User() {
                 <Image
                   roundedCircle
                   thumbnail
-                  src={data.picture.large}
+                  src={data.picture}
                   align="center"
                   width={200}
                   height={200}
@@ -168,39 +169,7 @@ function User() {
                 </div>
               </div>
             </Card>
-
-            <Table striped bordered hover variant="dark">
-              <thead>
-                <tr>
-                  <th>Full Name</th>
-                  <th>Email</th>
-                  <th>Birthdate</th>
-                  <th>Address</th>
-                  <th>Phone No.</th>
-                  <th>Password</th>
-                </tr>
-              </thead>
-              <tbody>
-                {users &&
-                  users.map((row, index) => {
-                    return (
-                      <tr onClick={() => dispatch(dataReplace(users[index]))}>
-                        <td>
-                          {row.name.first} {row.name.last}
-                        </td>
-                        <td> {row.email}</td>
-                        <td>{row.dob.date.slice(0, 10)}</td>
-                        <td>
-                          {row.location.postcode}, {row.location.city},{" "}
-                          {row.location.country}
-                        </td>
-                        <td>{row.phone}</td>
-                        <td> {row.login.password}</td>
-                      </tr>
-                    );
-                  })}
-              </tbody>
-            </Table>
+            <DataTable />
           </div>
         )
       )}

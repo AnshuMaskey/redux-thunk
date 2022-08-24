@@ -6,12 +6,12 @@ const Text = ({ user }) => {
   const index = useSelector((state) => state.activeIcon);
 
   const sentence = [
-    `Hi, my name is ${user.name.first} ${user.name.last}`,
+    `Hi, my name is ${user.name}`,
     `My email address is  ${user.email}`,
-    `My birthdate is ${user.dob.date.slice(0, 10)}`,
-    `My address is ${user.location.postcode}, ${user.location.city}, ${user.location.country}`,
+    `My birthdate is ${user.date}`,
+    `My address is ${user.address}`,
     `My phone number is ${user.phone}`,
-    `My password is ${user.login.password}`,
+    `My password is ${user.password}`,
   ];
   return (
     <div>
