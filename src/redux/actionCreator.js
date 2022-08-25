@@ -20,7 +20,7 @@ export const getdata = (setError) => async (dispatch) => {
     dispatch({
       type: GET_DATA,
       payload: {
-        id: data.id.value,
+        id: Date.now(),
         name: `${data.name.first} ${data.name.last}`,
         email: data.email,
         date: data.dob.date.slice(0, 10),

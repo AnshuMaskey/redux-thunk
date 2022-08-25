@@ -3,7 +3,7 @@ import Table from "react-bootstrap/Table";
 import { useDispatch, useSelector } from "react-redux";
 import ReadData from "./ReadData";
 import EditData from "./EditData";
-import { editData, deleteData, updateData } from "../redux/actionCreator";
+import { editData, updateData } from "../redux/actionCreator";
 import { Form } from "react-bootstrap";
 
 const DataTable = () => {
@@ -16,10 +16,10 @@ const DataTable = () => {
     dispatch(editData(id));
   };
 
-  const handleDelete = (e, id) => {
-    e.preventDefault();
-    dispatch(deleteData(id));
-  };
+  // const handleDelete = (e, id) => {
+  //   e.preventDefault();
+  //   dispatch(deleteData(id));
+  // };
 
   const handleSave = (e, id) => {
     e.preventDefault();
@@ -60,7 +60,7 @@ const DataTable = () => {
                       <ReadData
                         row={row}
                         handleEdit={handleEdit}
-                        handleDelete={handleDelete}
+                        // handleDelete={handleDelete}
                       />
                     )}
                   </Fragment>
