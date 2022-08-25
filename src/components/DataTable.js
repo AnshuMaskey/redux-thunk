@@ -10,10 +10,10 @@ const DataTable = () => {
   const dispatch = useDispatch();
   const id = useSelector((state) => state.id);
 
-  const handleEdit = (e, id) => {
-    e.preventDefault();
-    dispatch(editData(id));
-  };
+  // const handleEdit = (e, id) => {
+  //   e.preventDefault();
+  //   dispatch(editData(id));
+  // };
 
   // const handleDelete = (e, id) => {
   //   e.preventDefault();
@@ -58,7 +58,7 @@ const DataTable = () => {
                     ) : (
                       <ReadData
                         row={row}
-                        handleEdit={handleEdit}
+                        // handleEdit={handleEdit}
                         // handleDelete={handleDelete}
                       />
                     )}

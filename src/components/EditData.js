@@ -4,7 +4,7 @@ import { IconButton } from "@mui/material";
 import { MdCancel } from "react-icons/md";
 import { BsCheckCircleFill } from "react-icons/bs";
 import { inputChange } from "../redux/actionCreator";
-import { dataReplace } from "../redux/actionCreator";
+// import { dataReplace } from "../redux/actionCreator";
 
 const EditData = ({ row, handleCancel, handleSave }) => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const EditData = ({ row, handleCancel, handleSave }) => {
     dispatch(inputChange(inputValue));
   };
   return (
-    <tr onClick={() => dispatch(dataReplace(row))}>
+    <tr>
       <td>
         <input
           type="text"
