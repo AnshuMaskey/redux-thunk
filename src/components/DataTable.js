@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import ReadData from "./ReadData";
 import EditData from "./EditData";
 import { editData, updateData } from "../redux/actionCreator";
-import { Form } from "react-bootstrap";
 
 const DataTable = () => {
   const users = useSelector((state) => state.users);
@@ -32,7 +31,7 @@ const DataTable = () => {
   };
   return (
     <div>
-      <Form>
+      {users.length > 0 && (
         <Table striped bordered hover variant="dark">
           <thead>
             <tr>
@@ -68,7 +67,7 @@ const DataTable = () => {
               })}
           </tbody>
         </Table>
-      </Form>
+      )}
     </div>
   );
 };

@@ -17,6 +17,7 @@ function User() {
   const dispatch = useDispatch();
   const [error, setError] = useState("");
   const data = useSelector((state) => state.user);
+
   const loading = useSelector((state) => state.isLoading);
   console.log(data, "data");
 
@@ -96,82 +97,82 @@ function User() {
             ariaLabel="rings-loading"
           />
         </div>
+      ) : Object.keys(data).length > 0 ? (
+        <div>
+          <Card
+            sx={{
+              width: 750,
+              backgroundColor: "rgb(235, 245, 245)",
+              margin: "auto",
+              marginBottom: 10,
+            }}
+          >
+            <div className="m-3 ">
+              <Image
+                roundedCircle
+                thumbnail
+                src={data.picture}
+                align="center"
+                width={200}
+                height={200}
+              />
+            </div>
+            <div>
+              <h3>
+                <Text user={data} />
+              </h3>
+            </div>
+            <div className="iconsConatiner">
+              <div className="icons">
+                <IconButton
+                  className="icon"
+                  name="name"
+                  onMouseEnter={activeHandler}
+                >
+                  <BsFillPersonFill size={35} />
+                </IconButton>
+                <IconButton
+                  className="icon"
+                  name="mail"
+                  onMouseEnter={activeHandler}
+                >
+                  <AiOutlineMail size={35} />
+                </IconButton>
+                <IconButton
+                  className="icon"
+                  name="birth"
+                  onMouseEnter={activeHandler}
+                >
+                  <RiCalendarTodoFill size={35} />
+                </IconButton>
+                <IconButton
+                  className="icon"
+                  name="map"
+                  onMouseEnter={activeHandler}
+                >
+                  <FaMapMarkedAlt size={35} />
+                </IconButton>
+                <IconButton
+                  className="icon"
+                  name="phone"
+                  onMouseEnter={activeHandler}
+                >
+                  <AiFillPhone size={35} />
+                </IconButton>
+                <IconButton
+                  className="icon"
+                  name="lock"
+                  onMouseEnter={activeHandler}
+                >
+                  <AiFillLock size={35} />
+                </IconButton>
+              </div>
+            </div>
+          </Card>
+          <DataTable />
+        </div>
       ) : (
-        Object.keys(data).length > 0 && (
-          <div>
-            <Card
-              sx={{
-                width: 750,
-                backgroundColor: "rgb(235, 245, 245)",
-                margin: "auto",
-                marginBottom: 10,
-              }}
-            >
-              <div className="m-3 ">
-                <Image
-                  roundedCircle
-                  thumbnail
-                  src={data.picture}
-                  align="center"
-                  width={200}
-                  height={200}
-                />
-              </div>
-              <div>
-                <h3>
-                  <Text user={data} />
-                </h3>
-              </div>
-              <div className="iconsConatiner">
-                <div className="icons">
-                  <IconButton
-                    className="icon"
-                    name="name"
-                    onMouseEnter={activeHandler}
-                  >
-                    <BsFillPersonFill size={35} />
-                  </IconButton>
-                  <IconButton
-                    className="icon"
-                    name="mail"
-                    onMouseEnter={activeHandler}
-                  >
-                    <AiOutlineMail size={35} />
-                  </IconButton>
-                  <IconButton
-                    className="icon"
-                    name="birth"
-                    onMouseEnter={activeHandler}
-                  >
-                    <RiCalendarTodoFill size={35} />
-                  </IconButton>
-                  <IconButton
-                    className="icon"
-                    name="map"
-                    onMouseEnter={activeHandler}
-                  >
-                    <FaMapMarkedAlt size={35} />
-                  </IconButton>
-                  <IconButton
-                    className="icon"
-                    name="phone"
-                    onMouseEnter={activeHandler}
-                  >
-                    <AiFillPhone size={35} />
-                  </IconButton>
-                  <IconButton
-                    className="icon"
-                    name="lock"
-                    onMouseEnter={activeHandler}
-                  >
-                    <AiFillLock size={35} />
-                  </IconButton>
-                </div>
-              </div>
-            </Card>
-            <DataTable />
-          </div>
-        )
+        <DataTable />
       )}
     </div>
   );

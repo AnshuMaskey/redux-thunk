@@ -13,16 +13,16 @@ const ReadData = ({ row, handleEdit }) => {
   const dispatch = useDispatch();
 
   const handleYes = (id) => {
-    setShow(false);
     dispatch(deleteData(id));
+    setShow(false);
   };
 
-  const handleDelete = (e, id) => {
+  const handleDelete = (e) => {
     e.preventDefault();
     setShow(true);
   };
   return (
-    <tr onClick={() => dispatch(dataReplace(row))}>
+    <tr onMouseEnter={() => dispatch(dataReplace(row))}>
       <td>{row.name}</td>
       <td> {row.email}</td>
       <td>{row.date}</td>
