@@ -18,6 +18,7 @@ const ReadData = ({ row }) => {
   };
   const handleEdit = (e, id) => {
     e.preventDefault();
+    console.log(id, "edit");
     dispatch(editData(id));
   };
   const handleDelete = (e) => {

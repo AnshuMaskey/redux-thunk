@@ -1,17 +1,18 @@
 import React, { Fragment } from "react";
 import Table from "react-bootstrap/Table";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import ReadData from "./ReadData";
 import EditData from "./EditData";
-import { editData, updateData } from "../redux/actionCreator";
+// import { dataReplace, editData, updateData } from "../redux/actionCreator";
 
 const DataTable = () => {
   const users = useSelector((state) => state.users);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const id = useSelector((state) => state.id);
 
   // const handleEdit = (e, id) => {
   //   e.preventDefault();
+  //   console.log(id, "handleedit");
   //   dispatch(editData(id));
   // };
 
@@ -20,15 +21,6 @@ const DataTable = () => {
   //   dispatch(deleteData(id));
   // };
 
-  const handleSave = (e, id) => {
-    e.preventDefault();
-    dispatch(updateData(id));
-    dispatch(editData(null));
-  };
-
-  const handleCancel = () => {
-    dispatch(editData(null));
-  };
   return (
     <div>
       {users.length > 0 && (
@@ -52,8 +44,8 @@ const DataTable = () => {
                     {id === row.id ? (
                       <EditData
                         row={row}
-                        handleSave={handleSave}
-                        handleCancel={handleCancel}
+                        // handleSave={handleSave}
+                        // handleCancel={handleCancel}
                       />
                     ) : (
                       <ReadData

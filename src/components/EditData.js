@@ -4,14 +4,26 @@ import { IconButton } from "@mui/material";
 import { MdCancel } from "react-icons/md";
 import { BsCheckCircleFill } from "react-icons/bs";
 import { inputChange } from "../redux/actionCreator";
-// import { dataReplace } from "../redux/actionCreator";
+import { dataReplace, editData, updateData } from "../redux/actionCreator";
 
-const EditData = ({ row, handleCancel, handleSave }) => {
+const EditData = ({ row }) => {
   const dispatch = useDispatch();
   const inputHandler = (e) => {
     const inputValue = e.target;
     console.log(inputValue.value);
     dispatch(inputChange(inputValue));
+  };
+
+  const handleCancel = (row) => {
+    console.log(row, "row");
+    dispatch(editData(null));
+    dispatch(dataReplace(row));
+  };
+
+  const handleSave = (e, id) => {
+    e.preventDefault();
+    dispatch(updateData(id));
+    dispatch(editData(null));
   };
   return (
     <tr>
@@ -88,7 +100,7 @@ const EditData = ({ row, handleCancel, handleSave }) => {
         >
           <BsCheckCircleFill size={20} color="#fff" />
         </IconButton>
-        <IconButton className="table_icon" onClick={handleCancel}>
+        <IconButton className="table_icon" onClick={() => handleCancel(row)}>
           <MdCancel size={25} color="#fff" />
         </IconButton>
       </td>
