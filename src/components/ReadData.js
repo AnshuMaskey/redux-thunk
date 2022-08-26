@@ -1,7 +1,12 @@
 import { IconButton } from "@mui/material";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { dataReplace, deleteData, editData } from "../redux/actionCreator";
+import {
+  dataReplace,
+  deleteData,
+  editData,
+  userFirst,
+} from "../redux/actionCreator";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import "./User.css";
 import Modal from "react-bootstrap/Modal";
@@ -14,12 +19,15 @@ const ReadData = ({ row }) => {
 
   const handleYes = (id) => {
     dispatch(deleteData(id));
+
     setShow(false);
+    dispatch(userFirst());
   };
   const handleEdit = (e, id) => {
     e.preventDefault();
     console.log(id, "edit");
     dispatch(editData(id));
+    dispatch(dataReplace(row));
   };
   const handleDelete = (e) => {
     e.preventDefault();
@@ -27,8 +35,8 @@ const ReadData = ({ row }) => {
   };
   return (
     <>
-      <tr onClick={() => dispatch(dataReplace(row))}>
-        <td>{row.name}</td>
+      <tr>
+        <td onClick={() => dispatch(dataReplace(row))}>{row.name}</td>
         <td> {row.email}</td>
         <td>{row.date}</td>
         <td>{row.address}</td>
@@ -41,10 +49,7 @@ const ReadData = ({ row }) => {
           >
             <AiFillEdit color="#fff" />
           </IconButton>
-          <IconButton
-            className="table_icon"
-            onClick={(e) => handleDelete(e, row.id)}
-          >
+          <IconButton className="table_icon" onClick={(e) => handleDelete(e)}>
             <AiFillDelete color="#fff" />
           </IconButton>
         </td>

@@ -8,6 +8,7 @@ import { dataReplace, editData, updateData } from "../redux/actionCreator";
 
 const EditData = ({ row }) => {
   const dispatch = useDispatch();
+
   const inputHandler = (e) => {
     const inputValue = e.target;
     console.log(inputValue.value);

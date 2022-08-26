@@ -7,6 +7,7 @@ import {
   DELETE,
   UPDATE,
   INPUT_CHANGE,
+  USER_FIRST,
 } from "./action";
 
 export const initialState = {
@@ -20,25 +21,30 @@ export const initialState = {
 export const reducer = (state = initialState, { payload, type }) => {
   switch (type) {
     case GET_DATA:
-      console.log(payload, "paylo");
+      // console.log(payload, "paylo");
       return {
         ...state,
         user: payload,
         users: [...state.users, payload],
       };
     case LOADING:
-      console.log(payload, "paylo");
+      // console.log(payload, "paylo");
       return {
         ...state,
         isLoading: payload,
       };
     case REPLACE:
-      console.log(payload, "user replcae");
+      // console.log(payload, "user replcae");
       return {
         ...state,
         user: payload,
       };
-
+    case USER_FIRST:
+      // console.log(payload, "user replcae");
+      return {
+        ...state,
+        user: { ...state.users[0] },
+      };
     case ICON_INDEX:
       // console.log(payload);
       return {
@@ -46,22 +52,23 @@ export const reducer = (state = initialState, { payload, type }) => {
         activeIcon: payload,
       };
     case ID_UPDATE:
-      console.log(payload, "EDIT");
+      // console.log(payload, "EDIT");
       return {
         ...state,
         id: payload,
       };
 
     case DELETE:
-      console.log(payload, "reducer  wala delete");
+      // console.log(payload, "reducer  wala delete");
+      console.log(state, "state old");
       return {
         ...state,
 
         users: state.users.filter((user) => user.id !== payload),
-        user: {},
+        user: { ...state.users[0] },
       };
     case UPDATE:
-      console.log(state.user, "update");
+      // console.log(state.user, "update");
       return {
         ...state,
         users: state.users.map((user) =>
@@ -69,7 +76,7 @@ export const reducer = (state = initialState, { payload, type }) => {
         ),
       };
     case INPUT_CHANGE:
-      console.log(payload, "input");
+      // console.log(payload, "input");
       return {
         ...state,
         user: { ...state.user, [payload.name]: payload.value },

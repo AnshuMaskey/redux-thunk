@@ -8,6 +8,7 @@ import {
   DELETE,
   UPDATE,
   INPUT_CHANGE,
+  USER_FIRST,
 } from "./action.js";
 
 export const getdata = (setError) => async (dispatch) => {
@@ -68,4 +69,8 @@ export const updateData = (id) => ({
 export const inputChange = (data) => ({
   type: INPUT_CHANGE,
   payload: data,
+});
+
+export const userFirst = () => ({
+  type: USER_FIRST,
 });

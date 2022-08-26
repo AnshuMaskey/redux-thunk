@@ -6,3 +6,4 @@ export const ID_UPDATE = "ID_UPDATE ";
 export const DELETE = "DELETE ";
 export const UPDATE = "UPDATE ";
 export const INPUT_CHANGE = "INPUT_CHANGE ";
+export const USER_FIRST = "USER_FIRST ";
