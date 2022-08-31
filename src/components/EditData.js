@@ -3,8 +3,12 @@ import { useDispatch } from "react-redux";
 import { IconButton } from "@mui/material";
 import { MdCancel } from "react-icons/md";
 import { BsCheckCircleFill } from "react-icons/bs";
-import { inputChange } from "../redux/actionCreator";
-import { dataReplace, editData, updateData } from "../redux/actionCreator";
+import {
+  inputChange,
+  dataReplace,
+  editData,
+  updateData,
+} from "../redux/userSlice.js";
 
 const EditData = ({ row }) => {
   const dispatch = useDispatch();

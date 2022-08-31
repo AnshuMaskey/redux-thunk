@@ -6,9 +6,8 @@ import EditData from "./EditData";
 // import { dataReplace, editData, updateData } from "../redux/actionCreator";
 
 const DataTable = () => {
-  const users = useSelector((state) => state.users);
+  const { users, id } = useSelector((state) => state.users);
   // const dispatch = useDispatch();
-  const id = useSelector((state) => state.id);
 
   // const handleEdit = (e, id) => {
   //   e.preventDefault();
@@ -22,7 +21,7 @@ const DataTable = () => {
   // };
 
   return (
-    <div>
+    <div key={id}>
       {users.length > 0 && (
         <Table striped bordered hover variant="dark">
           <thead>

@@ -6,7 +6,7 @@ import {
   deleteData,
   editData,
   userFirst,
-} from "../redux/actionCreator";
+} from "../redux/userSlice";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import "./User.css";
 import Modal from "react-bootstrap/Modal";

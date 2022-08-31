@@ -5,26 +5,20 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { RiCalendarTodoFill } from "react-icons/ri";
 import { FaMapMarkedAlt } from "react-icons/fa";
 import "./User.css";
-import { getdata, iconIndex, dataLoader } from "../redux/actionCreator";
+import { getdata, iconIndex } from "../redux/userSlice.js";
 import { useDispatch, useSelector } from "react-redux";
 import { IconButton, Card, Alert } from "@mui/material";
 import Text from "./Text";
 import { Rings } from "react-loader-spinner";
 import DataTable from "./DataTable";
-import { useState } from "react";
 
 function User() {
   const dispatch = useDispatch();
-  const [error, setError] = useState("");
-  const data = useSelector((state) => state.user);
-  const users = useSelector((state) => state.users);
-
-  const loading = useSelector((state) => state.isLoading);
-  console.log(data, "data");
+  // const data = useSelector((state) => state.user);
+  const { user, users, isLoading, error } = useSelector((state) => state.users);
 
   const dataHandler = () => {
-    dispatch(getdata(setError));
-    dispatch(dataLoader(true));
+    dispatch(getdata());
   };
 
   const activeHandler = (e) => {
@@ -75,7 +69,7 @@ function User() {
             <h4>{error}</h4>
           </Alert>
         </div>
-      ) : loading ? (
+      ) : isLoading ? (
         <div
           style={{
             width: "100%",
@@ -112,7 +106,7 @@ function User() {
                 <Image
                   roundedCircle
                   thumbnail
-                  src={data.picture}
+                  src={user.picture}
                   align="center"
                   width={200}
                   height={200}
@@ -120,7 +114,7 @@ function User() {
               </div>
               <div>
                 <h3>
-                  <Text user={data} />
+                  <Text user={user} />
                 </h3>
               </div>
               <div className="iconsConatiner">

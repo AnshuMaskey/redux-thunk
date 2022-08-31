@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 const Text = ({ user }) => {
   //   const user = useSelector((state) => state.user);
-  const index = useSelector((state) => state.activeIcon);
+  const { activeIcon } = useSelector((state) => state.users);
 
   const sentence = [
     `Hi, my name is ${user.name}`,
@@ -15,7 +15,7 @@ const Text = ({ user }) => {
   ];
   return (
     <div>
-      <h3>{sentence[index]}</h3>
+      <h3>{sentence[activeIcon]}</h3>
     </div>
   );
 };
